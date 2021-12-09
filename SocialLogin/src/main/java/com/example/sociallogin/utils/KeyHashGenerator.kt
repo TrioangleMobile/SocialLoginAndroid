@@ -1,4 +1,4 @@
-package com.example.socialloginintegration.utils
+package com.example.sociallogin.utils
 
 import android.app.Activity
 import android.content.pm.PackageInfo
