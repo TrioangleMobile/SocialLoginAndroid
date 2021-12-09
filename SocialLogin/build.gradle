@@ -55,5 +55,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     /* For Facebook Sign in */
-    implementation 'com.facebook.android:facebook-android-sdk:4.0.1'
+    implementation 'com.facebook.android:facebook-android-sdk:8.1.0'
 }
