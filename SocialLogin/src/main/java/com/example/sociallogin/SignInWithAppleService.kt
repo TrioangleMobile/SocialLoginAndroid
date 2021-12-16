@@ -8,7 +8,6 @@ import android.webkit.SslErrorHandler
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.fragment.app.FragmentManager
-import com.willowtreeapps.signinwithapplebutton.view.SignInWebViewDialogFragment
 import java.util.*
 
 class SignInWithAppleService(

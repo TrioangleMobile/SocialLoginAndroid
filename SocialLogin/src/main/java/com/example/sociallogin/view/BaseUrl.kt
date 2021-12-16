@@ -1,4 +1,4 @@
-package com.willowtreeapps.signinwithapplebutton.view
+package com.example.sociallogin
 
 object BaseUrl {
 

@@ -1,4 +1,4 @@
-package com.willowtreeapps.signinwithapplebutton.view
+package com.example.sociallogin
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -8,10 +8,7 @@ import android.util.Log
 import android.webkit.*
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import com.willowtreeapps.signinwithapplebutton.SignInWithAppleConfiguration
-import com.willowtreeapps.signinwithapplebutton.SignInWithAppleResult
-import com.willowtreeapps.signinwithapplebutton.SignInWithAppleService
-import com.willowtreeapps.signinwithapplebutton.view.SignInWithAppleButton.Companion.SIGN_IN_WITH_APPLE_LOG_TAG
+import com.example.sociallogin.SignInWithAppleButton.Companion.SIGN_IN_WITH_APPLE_LOG_TAG
 import org.json.JSONObject
 
 internal class SignInWebViewClient(

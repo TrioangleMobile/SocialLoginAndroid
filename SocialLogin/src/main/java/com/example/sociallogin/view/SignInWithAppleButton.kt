@@ -1,4 +1,4 @@
-package com.willowtreeapps.signinwithapplebutton.view
+package com.example.sociallogin
 
 import android.content.Context
 import android.graphics.drawable.GradientDrawable
@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.fragment.app.FragmentManager
-import com.willowtreeapps.signinwithapplebutton.*
 
 class SignInWithAppleButton @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null,
