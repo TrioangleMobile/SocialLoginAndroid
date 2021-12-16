@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="SignInWithAppleButton">
+        <item name="android:background">@drawable/sign_in_with_apple_button_background_theme</item>
+        <item name="android:textColor">?android:windowBackground</item>
+        <item name="android:drawableLeft">@drawable/sign_in_with_apple_button_icon_shape_gray</item>
+    </style>
+
+    <style name="SignInWithAppleButton.Black">
+        <item name="android:background">@drawable/sign_in_with_apple_button_background_theme</item>
+        <item name="android:textColor">@color/sign_in_with_apple_button_txt_primary</item>
+        <item name="android:drawableLeft">@drawable/sign_in_with_apple_button_icon_shape_white</item>
+        <!-- Inherits default settings. Black is the default if you don't specify a style. -->
+    </style>
+
+    <style name="sign_in_with_apple_button_DialogTheme" parent="android:Theme.DeviceDefault.NoActionBar">
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+    </style>
+</resources>

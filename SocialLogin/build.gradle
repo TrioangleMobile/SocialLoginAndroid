@@ -6,6 +6,7 @@ plugins {
 
 android {
     compileSdk 31
+    resourcePrefix "sign_in_with_apple_button_"
 
     defaultConfig {
         minSdk 21
@@ -30,6 +31,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 afterEvaluate {
@@ -53,6 +59,13 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+
+    testImplementation 'org.robolectric:robolectric:4.3'
+    testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
 
     /* For Facebook Sign in */
     implementation 'com.facebook.android:facebook-android-sdk:8.1.0'
