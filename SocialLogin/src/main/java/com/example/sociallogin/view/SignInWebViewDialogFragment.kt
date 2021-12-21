@@ -48,7 +48,8 @@ internal class SignInWebViewDialogFragment : DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         authenticationAttempt = arguments?.getParcelable(AUTHENTICATION_ATTEMPT_KEY)!!
-        setStyle(STYLE_NORMAL, R.style.sign_in_with_apple_button_DialogTheme)
+        var applyStyle = resources.getIdentifier("sign_in_with_apple_button_DialogTheme", "style", "com.example.sociallogin")
+        setStyle(STYLE_NORMAL, applyStyle)
     }
 
     override fun onCreateView(

@@ -6,7 +6,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import android.widget.TextView
-import com.example.sociallogin.R
 import androidx.fragment.app.FragmentManager
 
 class SignInWithAppleButton @JvmOverloads constructor(
@@ -18,30 +17,40 @@ class SignInWithAppleButton @JvmOverloads constructor(
     }
 
     init {
-        LayoutInflater.from(context).inflate(R.layout.sign_in_with_apple_button, this, true)
+        var applyLayout = resources.getIdentifier("sign_in_with_apple_button", "layout", "com.example.sociallogin")
+        LayoutInflater.from(context).inflate(applyLayout, this, true)
     }
 
-    private val textView: TextView = findViewById(R.id.textView)
+    private val textView: TextView = findViewById(resources.getIdentifier("textView", "id", "com.example.sociallogin"))
 
     init {
+        var applyStyleable = resources.getIdentifier("SignInWithAppleButton", "styleable", "com.example.sociallogin")
+        var applyStyle = resources.getIdentifier("SignInWithAppleButton", "style", "com.example.sociallogin")
         val attributes =
-            context.theme.obtainStyledAttributes(attrs, R.styleable.SignInWithAppleButton, 0, R.style.SignInWithAppleButton)
+            context.theme.obtainStyledAttributes(attrs, applyStyleable as IntArray, 0, applyStyle)
+
+        var applyStyleableBg = resources.getIdentifier("SignInWithAppleButton_android_background", "styleable", "com.example.sociallogin")
+        var applyStyleableLeft = resources.getIdentifier("SignInWithAppleButton_android_drawableLeft", "styleable", "com.example.sociallogin")
+        var applyStyleableText = resources.getIdentifier("SignInWithAppleButton_android_textColor", "styleable", "com.example.sociallogin")
+        var applyStyleableTextType = resources.getIdentifier("SignInWithAppleButton_sign_in_with_apple_button_textType", "styleable", "com.example.sociallogin")
+        var applyStyleableCorner = resources.getIdentifier("SignInWithAppleButton_sign_in_with_apple_button_cornerRadius", "styleable", "com.example.sociallogin")
+        var applyDimenCorner = resources.getIdentifier("sign_in_with_apple_button_cornerRadius_default", "dimen", "com.example.sociallogin")
 
         // Style
-        val background = attributes.getDrawable(R.styleable.SignInWithAppleButton_android_background)
-        val icon = attributes.getDrawable(R.styleable.SignInWithAppleButton_android_drawableLeft)
-        val textColor = attributes.getColorStateList(R.styleable.SignInWithAppleButton_android_textColor)
+        val background = attributes.getDrawable(applyStyleableBg)
+        val icon = attributes.getDrawable(applyStyleableLeft)
+        val textColor = attributes.getColorStateList(applyStyleableText)
 
         // Text type
         val text = attributes.getInt(
-            R.styleable.SignInWithAppleButton_sign_in_with_apple_button_textType,
+            applyStyleableTextType,
             SignInTextType.SIGN_IN.ordinal
         )
 
         // Corner radius
         val cornerRadius = attributes.getDimension(
-            R.styleable.SignInWithAppleButton_sign_in_with_apple_button_cornerRadius,
-            resources.getDimension(R.dimen.sign_in_with_apple_button_cornerRadius_default)
+            applyStyleableCorner,
+            resources.getDimension(applyDimenCorner)
         )
 
         attributes.recycle()
@@ -50,8 +59,10 @@ class SignInWithAppleButton @JvmOverloads constructor(
         (background as? GradientDrawable)?.cornerRadius = cornerRadius
 
         if (icon != null) {
+            var applyDimen = resources.getIdentifier("sign_in_with_apple_button_textView_icon_verticalOffset", "dimen", "com.example.sociallogin")
+
             val iconVerticalOffset =
-                resources.getDimensionPixelOffset(R.dimen.sign_in_with_apple_button_textView_icon_verticalOffset)
+                resources.getDimensionPixelOffset(applyDimen)
 
             icon.setBounds(
                 0,
