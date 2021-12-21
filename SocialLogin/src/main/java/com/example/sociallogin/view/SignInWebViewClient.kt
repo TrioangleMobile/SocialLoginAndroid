@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.sociallogin.SignInWithAppleButton.Companion.SIGN_IN_WITH_APPLE_LOG_TAG
 import org.json.JSONObject
+import com.example.sociallogin.R
 
 internal class SignInWebViewClient(
 

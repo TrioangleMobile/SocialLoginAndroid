@@ -17,6 +17,7 @@ import androidx.fragment.app.DialogFragment
 import com.example.sociallogin.SignInWithAppleButton.Companion.SIGN_IN_WITH_APPLE_LOG_TAG
 import org.json.JSONException
 import org.json.JSONObject
+import com.example.sociallogin.R
 
 @SuppressLint("SetJavaScriptEnabled")
 internal class SignInWebViewDialogFragment : DialogFragment() {

@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import android.widget.TextView
+import com.example.sociallogin.R
 import androidx.fragment.app.FragmentManager
 
 class SignInWithAppleButton @JvmOverloads constructor(
