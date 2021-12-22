@@ -16,12 +16,6 @@ class SignInWithAppleButton @JvmOverloads constructor(
         const val SIGN_IN_WITH_APPLE_LOG_TAG = "SIGN_IN_WITH_APPLE"
     }
 
-    init {
-        val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        var applyLayout = resources.getIdentifier("sign_in_with_apple_button", "layout", "com.example.sociallogin")
-        inflater.inflate(applyLayout, null)
-    }
-
     private val textView: TextView = findViewById(resources.getIdentifier("textView", "id", "com.example.sociallogin"))
 
     init {
