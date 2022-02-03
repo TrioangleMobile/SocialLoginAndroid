@@ -30,7 +30,7 @@ object FacebookHelper {
      * Interface to listen the Facebook login
      */
     interface OnFbSignInListener {
-        fun OnFbSignInComplete(graphResponse: GraphResponse?, error: String?)
+        fun OnFbSignInComplete(graphResponse: JSONObject?, error: String?)
     }
 
     fun initFacebook(){
@@ -93,7 +93,7 @@ object FacebookHelper {
             accessToken,
             object : GraphRequest.GraphJSONObjectCallback {
                 override fun onCompleted(`object`: JSONObject?, response: GraphResponse?) {
-                    fbSignInListener!!.OnFbSignInComplete(response, null)
+                    fbSignInListener!!.OnFbSignInComplete(response!!.jsonObject, null)
                 }
             })
         val parameters = Bundle()
