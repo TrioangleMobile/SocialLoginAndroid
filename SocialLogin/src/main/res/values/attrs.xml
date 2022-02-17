@@ -6,7 +6,6 @@
         <attr name="android:drawableLeft"/>
         <attr name="android:textColor"/>
         <attr name="android:textSize"/>
-        <attr name="signinWithApple" format="color"/>
 
         <!-- Text type -->
         <attr name="sign_in_with_apple_button_textType" format="enum">

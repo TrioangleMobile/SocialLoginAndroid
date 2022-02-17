@@ -1,16 +1,14 @@
-package com.example.sociallogin
+package com.trioangle.sociallogin.view
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.net.Uri
 import android.os.Build
 import android.util.Log
 import android.webkit.*
-import android.widget.Toast
 import androidx.annotation.RequiresApi
-import com.example.sociallogin.SignInWithAppleButton.Companion.SIGN_IN_WITH_APPLE_LOG_TAG
-import org.json.JSONObject
-import com.example.sociallogin.R
+import com.trioangle.sociallogin.SignInWithAppleResult
+import com.trioangle.sociallogin.SignInWithAppleService
+import com.trioangle.sociallogin.view.SignInWithAppleButton.Companion.SIGN_IN_WITH_APPLE_LOG_TAG
 
 internal class SignInWebViewClient(
 

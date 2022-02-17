@@ -1,13 +1,10 @@
-package com.example.sociallogin
+package com.trioangle.sociallogin
 
 import android.net.Uri
-import android.net.http.SslError
 import android.os.Parcel
 import android.os.Parcelable
-import android.webkit.SslErrorHandler
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import androidx.fragment.app.FragmentManager
+import com.trioangle.sociallogin.view.SignInWebViewDialogFragment
 import java.util.*
 
 class SignInWithAppleService(
@@ -91,7 +88,11 @@ class SignInWithAppleService(
     }
 
     fun show() {
-        val fragment = SignInWebViewDialogFragment.newInstance(AuthenticationAttempt.create(configuration))
+        val fragment = SignInWebViewDialogFragment.newInstance(
+            AuthenticationAttempt.create(
+                configuration
+            )
+        )
         fragment.configure(callback)
         fragment.show(fragmentManager, fragmentTag)
     }

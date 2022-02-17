@@ -1,4 +1,4 @@
-package com.example.sociallogin
+package com.trioangle.sociallogin
 
 sealed class SignInWithAppleResult {
     data class Success(val authorizationCode: String) : SignInWithAppleResult()

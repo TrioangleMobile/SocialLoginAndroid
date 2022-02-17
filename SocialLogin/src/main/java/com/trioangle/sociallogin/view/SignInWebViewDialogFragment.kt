@@ -1,23 +1,19 @@
-package com.example.sociallogin
+package com.trioangle.sociallogin.view
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.DialogInterface
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
-import android.webkit.JavascriptInterface
 import android.webkit.WebView
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
-import com.example.sociallogin.SignInWithAppleButton.Companion.SIGN_IN_WITH_APPLE_LOG_TAG
-import org.json.JSONException
-import org.json.JSONObject
-import com.example.sociallogin.R
+import com.willowtreeapps.sociallogin.R
+import com.trioangle.sociallogin.SignInWithAppleResult
+import com.trioangle.sociallogin.SignInWithAppleService
+import com.trioangle.sociallogin.view.SignInWithAppleButton.Companion.SIGN_IN_WITH_APPLE_LOG_TAG
 
 @SuppressLint("SetJavaScriptEnabled")
 internal class SignInWebViewDialogFragment : DialogFragment() {
@@ -48,8 +44,7 @@ internal class SignInWebViewDialogFragment : DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         authenticationAttempt = arguments?.getParcelable(AUTHENTICATION_ATTEMPT_KEY)!!
-        var applyStyle = resources.getIdentifier("sign_in_with_apple_button_DialogTheme", "style", "com.example.sociallogin")
-        setStyle(STYLE_NORMAL, applyStyle)
+        setStyle(STYLE_NORMAL, R.style.sign_in_with_apple_button_DialogTheme)
     }
 
     override fun onCreateView(
@@ -58,23 +53,23 @@ internal class SignInWebViewDialogFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        val webView = context?.let {
-            WebView(it).apply {
+
+        val webView = WebView(context!!).apply {
             settings.apply {
                 javaScriptEnabled = true
                 javaScriptCanOpenWindowsAutomatically = true
             }
         }
-        }
-        webView?.webViewClient  = SignInWebViewClient(authenticationAttempt, ::onCallback)
+
+        webView.webViewClient = SignInWebViewClient(authenticationAttempt, ::onCallback)
 
 
         if (savedInstanceState != null) {
             savedInstanceState.getBundle(WEB_VIEW_KEY)?.run {
-                webView?.restoreState(this)
+                webView.restoreState(this)
             }
         } else {
-            webView?.loadUrl(authenticationAttempt.authenticationUri)
+           webView.loadUrl(authenticationAttempt.authenticationUri)
         }
 
         return webView

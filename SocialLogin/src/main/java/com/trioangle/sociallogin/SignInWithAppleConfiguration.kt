@@ -1,4 +1,4 @@
-package com.example.sociallogin
+package com.trioangle.sociallogin
 
 data class SignInWithAppleConfiguration(
     val clientId: String,

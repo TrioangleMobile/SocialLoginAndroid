@@ -1,4 +1,4 @@
-package com.example.sociallogin
+package com.trioangle.sociallogin
 
 interface SignInWithAppleCallback {
 
