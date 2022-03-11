@@ -1,4 +1,9 @@
-<resources>
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources
+    [<!ENTITY facebook_key "XXXXXX">]>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="sign_in_with_apple_button_signInWithApple">Continue with Apple</string>
     <string name="sign_in_with_apple_button_continueWithApple">Continue with Apple</string>
+    <string name="facebook_key" tools:ignore="ResourceName">&facebook_key;</string>
+    <string name="facebook_provider" tools:ignore="ResourceName">
+        "com.facebook.app.FacebookContentProvider&facebook_key;"</string>
 </resources>

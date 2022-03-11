@@ -2,14 +2,10 @@ package com.example.sociallogin
 
 import android.app.Activity
 import android.content.Intent
-
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.auth.api.signin.GoogleSignInStatusCodes
+import com.google.android.gms.auth.api.signin.*
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import com.trioangle.sociallogin.datamodels.AccountDetails
 
 
 object GoogleSignInHelper {
@@ -51,7 +47,7 @@ object GoogleSignInHelper {
     fun onStart() {
         val account: GoogleSignInAccount = GoogleSignIn.getLastSignedInAccount(activity)
         if (account != null && onGoogleSignInListener != null) {
-            onGoogleSignInListener!!.OnGSignInSuccess(account)
+            onGoogleSignInListener!!.OnGSignInSuccess(accountDetails(account))
         }
     }
 
@@ -77,7 +73,7 @@ object GoogleSignInHelper {
             val account: GoogleSignInAccount = completedTask.getResult(ApiException::class.java)
             // Signed in successfully
             if (onGoogleSignInListener != null) {
-                onGoogleSignInListener!!.OnGSignInSuccess(account)
+                onGoogleSignInListener!!.OnGSignInSuccess(accountDetails(account))
             }
         } catch (e: ApiException) {
             if (onGoogleSignInListener != null) {
@@ -88,8 +84,30 @@ object GoogleSignInHelper {
         }
     }
 
+    private fun accountDetails(account: GoogleSignInAccount): AccountDetails {
+        var accountDetails = AccountDetails()
+
+        accountDetails.apply {
+            accountId = account.id!!
+            accountFullName = account.displayName!!
+            accountPhotoUrl = account.photoUrl.let { account.photoUrl.toString() }
+            accountPhotoUrl = accountPhotoUrl.replace("s96-c", "s400-c")
+            accountEmail = account.email!!
+            val splitStr = accountFullName!!.split("\\s+".toRegex()).dropLastWhile { it.isEmpty() }
+                .toTypedArray()
+            accountFirstName = splitStr[0]
+            accountLastName = ""
+            for (i in 1 until splitStr.size) {
+                accountLastName = accountLastName + " " + splitStr[i]
+            }
+            if (accountLastName == "") accountLastName = ""
+        }
+
+        return accountDetails
+    }
+
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == RC_SIGN_IN && resultCode == Activity.RESULT_OK) {
+        if (requestCode == RC_SIGN_IN) {
             // The Task returned from this call is always completed, no need to attach a listener.
             val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
             handleSignInResult(task)
@@ -100,7 +118,7 @@ object GoogleSignInHelper {
      * Interface to listen the Google sign in
      */
     interface OnGoogleSignInListener {
-        fun OnGSignInSuccess(googleSignInAccount: GoogleSignInAccount?)
+        fun OnGSignInSuccess(accountDetails: AccountDetails?)
         fun OnGSignInError(error: String?)
     }
 }
